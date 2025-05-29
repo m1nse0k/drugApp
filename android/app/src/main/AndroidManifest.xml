@@ -1,0 +1,101 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.drug"> <!-- 실제 패키지 이름 확인! -->
+
+    <!-- ======== 권한 선언 (Permission Declarations) ======== -->
+    <!-- 정확한 알람 예약 (Android 12+) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- 알림 게시 (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!-- 알람 시계 우선순위 사용 (Android 12+) -->
+    <uses-permission android:name="android.permission.USE_ALARM_CLOCK" />
+    <!-- 전체 화면 인텐트 사용 -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <!-- 기기 절전 모드 해제 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 부팅 완료 시 실행 (알람 재등록) -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 진동 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 인터넷 연결 (API 통신, 이미지 로딩 등) -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <!-- ======== 애플리케이션 설정 (Application Settings) ======== -->
+    <application
+        android:label="drug"  
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"> <!-- HTTP 트래픽 허용 (이미지 등 로딩 시). HTTPS만 사용 시 false 또는 제거 가능 -->
+
+        <!-- 메인 액티비티 설정 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- 앱 실행 시 기본 테마 -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+
+            <!-- 앱 런처 아이콘 및 메인 액션 설정 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Flutter 플러그인 등록 관련 메타 데이터 -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+        <!-- ======== Android Alarm Manager Plus 플러그인 관련 설정 ======== -->
+        <service
+            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false"/>
+        <receiver
+            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"
+            android:exported="false"/>
+        <!-- 재부팅 시 알람 재등록을 위한 리시버 -->
+        <receiver
+            android:name="dev.fluttercommunity.plus.androidalarmmanager.RebootBroadcastReceiver"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <!-- 부팅 완료 시 이 리시버를 호출하도록 설정 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application> <!-- application 태그 끝 -->
+
+
+    <!-- ======== 패키지 가시성 쿼리 (Package Visibility Queries) ======== -->
+    <!-- 다른 앱과 상호작용(쿼리)이 필요할 때 선언 (Flutter >= 3.10) -->
+    <queries>
+        <!-- 텍스트 처리 액션 관련 쿼리 (Flutter 기본 사용) -->
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+            <!-- 이 intent 블록에는 action이 하나만 있어야 함! -->
+        </intent>
+
+        <!-- 정확한 알람 설정 화면 열기 위한 쿼리 (분리된 intent 블록) -->
+        <intent>
+            <action android:name="android.settings.REQUEST_SCHEDULE_EXACT_ALARM" />
+            <!-- 이 intent 블록에도 action이 하나만 있어야 함! -->
+        </intent>
+    </queries>
+
+</manifest> <!-- manifest 태그 끝 -->
