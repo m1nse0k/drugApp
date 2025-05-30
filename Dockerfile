@@ -13,10 +13,12 @@ RUN flutter pub get
 # 2. 프로젝트의 나머지 파일들을 작업 디렉토리로 복사합니다.
 #    assets 폴더도 여기에 포함되어야 합니다. pubspec.yaml에 assets 경로가 잘 명시되어 있는지 확인하세요.
 COPY . .
-
+RUN cd android && ./gradlew clean && cd ..
 # 3. Android 앱 (APK)을 빌드합니다.
 #    --release 플래그는 릴리즈 모드로 빌드합니다.
 #    (iOS 빌드는 macOS 환경이 필요하며, Docker만으로는 복잡합니다. 여기서는 APK 빌드에 집중합니다.)
+RUN flutter clean
+RUN flutter pub get
 RUN flutter build apk --release
 # 만약 웹 빌드가 필요하다면: RUN flutter build web --release
 

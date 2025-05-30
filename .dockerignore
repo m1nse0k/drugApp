@@ -1,0 +1,8 @@
+build/
+local.properties
+.dart_tool/
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
