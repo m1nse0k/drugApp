@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
-    sdk: flutter  
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,15 +48,15 @@ dependencies:
   alarm: ^3.1.4
   # 벨소리 재생용 (assets/sounds/alarm_sound.mp3를 재생)
   just_audio: ^0.9.18
-  flutter_local_notifications: ^12.0.4
+  flutter_local_notifications: ^19.2.1
   android_intent_plus: ^5.3.0
   package_info_plus: ^8.3.0
   permission_handler: ^11.3.1 # 추가
   device_info_plus: ^10.1.0 # 추가
   csv: ^5.1.1
-  image_picker: ^1.0.7 
+  image_picker: ^1.0.7
   # 2. HTTP 요청용 (서버 API 통신)
-  http: ^1.2.0 
+  http: ^1.2.0
   provider: ^6.0.0 # 또는 다른 상태관리 패키지 (riverpod, bloc 등)
 
 dev_dependencies:
