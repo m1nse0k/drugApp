@@ -46,8 +46,6 @@ dependencies:
   # 알람 매니저
   android_alarm_manager_plus: ^4.0.7
   alarm: ^3.1.4
-  # 진동
-  flutter_vibrate: ^1.3.0
   # 벨소리 재생용 (assets/sounds/alarm_sound.mp3를 재생)
   just_audio: ^0.9.18
   flutter_local_notifications: ^12.0.4

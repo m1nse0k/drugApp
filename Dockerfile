@@ -17,7 +17,7 @@ COPY . .
 # 3. Android 앱 (APK)을 빌드합니다.
 #    --release 플래그는 릴리즈 모드로 빌드합니다.
 #    (iOS 빌드는 macOS 환경이 필요하며, Docker만으로는 복잡합니다. 여기서는 APK 빌드에 집중합니다.)
-RUN flutter build apk --release --verbose
+RUN flutter build apk --release
 # 만약 웹 빌드가 필요하다면: RUN flutter build web --release
 
 # (선택 사항) 빌드된 APK를 쉽게 찾을 수 있도록 특정 위치로 옮길 수 있습니다.
