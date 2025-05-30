@@ -1,6 +1,6 @@
 # 1단계: Flutter SDK가 설치된 베이스 이미지를 사용합니다.
 # cirrusci/flutter는 Flutter 공식 CI에서 사용하는 이미지로, 다양한 버전 태그가 있습니다. (예: stable, beta, dev, 3.10.0 등)
-FROM cirrusci/flutter:beta AS builder
+FROM cirrusci/flutter:dev AS builder
 
 # 작업 디렉토리를 /app으로 설정합니다.
 WORKDIR /app
