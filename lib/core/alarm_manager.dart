@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data'; // Int64List 사용 위해 필요
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:drug/data/database/drug_database.dart'; // <<<=== DB 클래스 임포트
