@@ -23,9 +23,7 @@ RUN flutter build apk --release
 # 2단계: 최종 아티팩트 이미지 (Final Artifact Stage)
 # 빌드된 APK 파일만 포함하는 매우 가벼운 이미지를 만듭니다.
 # ==============================================================================
-FROM scratch
-# 또는 alpine 같은 더 기능이 있는 최소 이미지를 원한다면:
-# FROM alpine:latest
+FROM alpine:latest
 
 # APK 파일이 저장될 작업 디렉토리 (컨테이너 내부 경로)
 WORKDIR /apk_output
@@ -33,3 +31,5 @@ WORKDIR /apk_output
 # 빌더 스테이지(/app/build/app/outputs/flutter-apk/app-release.apk)에서
 # 빌드된 APK 파일을 현재 스테이지의 작업 디렉토리로 복사합니다.
 COPY --from=builder /app/build/app/outputs/flutter-apk/app-release.apk ./app-release.apk
+
+CMD ["sh"]
