@@ -382,7 +382,7 @@ class _ImageSearchScreenState extends State<ImageSearchScreen> {
                             horizontal: 10.0,
                           ),
                           child: Text(
-                            '선명한 알약 사진은 더 정확한 결과를 제공합니다.\n(특히 각인된 글자가 잘 보이도록 촬영해주세요.)',
+                            '선명한 알약 사진은 더 정확한 결과를 제공합니다.\n(하나의 약만 촬영해 주세요.)',
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[700],
