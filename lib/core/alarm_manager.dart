@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data'; // Int64List 사용 위해 필요
 import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:drug/data/database/drug_database.dart'; // <<<=== DB 클래스 임포트
@@ -123,7 +122,7 @@ Future<void> alarmCallback(int alarmId) async {
     print('Showing notification for ID: $alarmId with Drug Name: $drugName');
     await localNotif.show(
       alarmId,
-      '💊 복약 시간입니다!',
+      ' 💊 복약 시간입니다! ',
       '지금 [$drugName] 약을 복용하세요.', // <<<=== 약 이름 표시
       details,
       payload: alarmId.toString(), // payload는 그대로 alarmId 유지 가능
